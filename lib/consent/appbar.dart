@@ -14,7 +14,7 @@ PreferredSizeWidget appbar() {
         padding: const EdgeInsets.only(right: 15),
         child: CircleAvatar(
           radius: 18,
-          backgroundImage: AssetImage('images/p3.jpg'),
+          backgroundImage: AssetImage('images/profileFoto.jpg'),
         ),
       ),
     ],

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:recipe/consent/navigation.dart';
-import 'package:recipe/screen/home.dart';
+import 'package:provider/provider.dart';
+import 'package:recipe/consent/FavoriteModel.dart';
 import 'package:recipe/screen/splash.dart';
 
 void main() {
@@ -12,9 +12,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SplashPage(),
-      debugShowCheckedModeBanner: false,
+    return ChangeNotifierProvider(
+      create: (context) => FavoriteModel(),
+      child: MaterialApp(
+        title: 'Recipe App',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+        ),
+        home: SplashPage(),
+        debugShowCheckedModeBanner: false,
+      ),
     );
   }
 }

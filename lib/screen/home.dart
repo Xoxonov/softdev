@@ -12,14 +12,17 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int indexx = 0;
-  List category = ['All', 'Lunch', 'Dinner', 'Breackfast'];
-  List categoryname = ['dinner', 'lunch', 'dinner', 'fast'];
+  List category = ['All', 'Padang', 'Chinese', 'Betawi'];
+  List categoryname = ['All', 'Padang', 'Chinese', 'Betawi'];
   List food = [
-    ['burger', 'omlet', 'grilled wings', 'Grilled ribs'],
-    ['pizza', 'steak', 'pasta', 'burger'],
-    ['burger', 'omlet', 'grilled wings', 'Grilled ribs'],
-    ['pancake', 'egg', 'banana', 'egg'],
+    ['Soto Tangkar', 'Hot Pot', 'Dumplings', 'Dendeng'],
+    ['Rendang', 'Sate Padang', 'Ayam Pop', 'Gulai Ayam'],
+    ['Dim Sum', 'Mapo Tofu', 'Char Siu', 'Kung Pao Chicken'],
+    ['Soto Betawi', 'Nasi Uduk', 'Ketoprak', 'Gado-Gado'],
   ];
+
+  List<bool> isFavorite = List.generate(4, (index) => false); // Inisialisasi status favorit
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +34,7 @@ class _HomeState extends State<Home> {
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
               child: Text(
-                'Popular catehory',
+                'Popular Category',
                 style: TextStyle(
                   fontSize: 20,
                   color: font,
@@ -150,7 +153,25 @@ class _HomeState extends State<Home> {
                             padding: const EdgeInsets.only(right: 14),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.end,
-                              children: [Icon(Icons.favorite_border)],
+                              children: [
+                                // Perbarui ikon favorit sesuai statusnya
+                                GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      isFavorite[index] =
+                                          !isFavorite[index];
+                                    });
+                                  },
+                                  child: Icon(
+                                    isFavorite[index]
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                    color: isFavorite[index]
+                                        ? maincolor
+                                        : Colors.grey,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -177,7 +198,7 @@ class _HomeState extends State<Home> {
                             style: TextStyle(
                               fontSize: 18,
                               color: font,
-                              fontFamily: 'ro',
+                                                          fontFamily: 'ro',
                             ),
                           ),
                           SizedBox(height: 10),
@@ -227,3 +248,4 @@ class _HomeState extends State<Home> {
     );
   }
 }
+

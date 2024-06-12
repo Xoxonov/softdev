@@ -14,9 +14,9 @@ class _SplashPageState extends State<SplashPage> {
   @override
   Widget build(BuildContext context) {
     return EasySplashScreen(
-      logo: Image.asset('images/icon.png'),
+      logo: Image.asset('images/Logo.jpg'),
       title: Text(
-        'Flutter Skills',
+        'Recipe App',
         style: TextStyle(
           color: Colors.pink,
           fontFamily: 'ro',
